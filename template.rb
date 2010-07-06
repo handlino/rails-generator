@@ -1,5 +1,5 @@
 
-# remove unuse files
+# remove unused files
 run "rm README"
 run "rm public/index.html"
 run "rm -f public/javascripts/*"
