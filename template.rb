@@ -7,7 +7,8 @@ run "rm -f publuc/images/*"
 
 # install unit test framework
 
-gem 'rspec-rails',  :group => :test
+gem 'rspec', ">=2.0.0.beta.9", :group => :test
+gem 'rspec-rails', ">=2.0.0.beta.9.1",  :group => :test
 gem "factory_girl", :group => :test
 gem 'capybara', :group => :test
 gem 'database_cleaner', :group => :test
@@ -33,7 +34,7 @@ plugin 'handicraft_ujs', :git => 'git://github.com/ihower/handicraft_ujs.git'
 
 # gems
 
-gem 'will_paginate', "3.0.pre"
+gem 'will_paginate', ">=3.0.pre"
 gem 'delayed_job'
 gem 'paperclip'
 
