@@ -55,73 +55,13 @@ JQUERY
 
 initializer "jquery.rb", jquery
 
-# layout
-
-layout = <<-LAYOUT
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>#{app_name}</title>
-    <%= stylesheet_link :all %>
-</head>
-<!--[if lt IE 7 ]>
-<body class="ie6 yui-skin-sam"><![endif]-->
-<!--[if gte IE 7 ]>
-<body class="ie yui-skin-sam"><![endif]-->
-<!--[if !IE]>-->
-<body class="yui-skin-sam">
-<!--<![endif]-->
-    <div id="container">
-        <div id="header">
-            <div class="container_16">
-                <h1><a href="/">#{app_name}</a></h1>
-                <%= render :partial => '/common/user_menu' if you_are_user %>
-                <%= render :partial => '/common/customer_menu' if you_are_customer %>
-            </div>
-        </div>
-        <div id='stickies'>
-       <% flash.each do |type, msg| %>
-          <div style='stickie_<%=type%>'>
-            <%=h msg %>
-          </div>
-        <% end %>
-        </div>
-
-        <% if @content_for_box %>
-            <div id="box"  class="container_16 cleafix">
-                <%= yield(:box) %>
-            </div>
-        <% else %>
-            <div id="wrapper" class="container_16">
-                <% if @content_for_sidebar %>
-                <div id="main" class="grid_11 alpha">
-                    <%= yield %>
-                </div>
-                <div id="sidebar" class="grid_5 omega">
-                    <%= yield :sidebar %>
-                </div>
-                <% else %>
-                <div id="main">
-                    <%= yield %>
-                </div>
-                <% end %>
-                <div class="clear"></div>
-            </div>
-        <% end %>
-        <div class="container_16 clearfix">
-            <%= yield_or_default(yield(:footer), render('welcome/footer') )%>
-        </div>
-    </div>
-
-    <%= javascript_include_tag :default %>
-    <%= yield(:page_specific_javascript) %>
-</body>
-</html>
-LAYOUT
-
-remove_file "app/views/layouts/application.html.erb"
-create_file "app/views/layouts/application.html.erb", layout
+if yes?("Using Handicraft-theme ?")
+  if File.directory?("../handicraft-theme")
+    run "rm app/views/layouts/application.html.erb"
+    run "cp ../handicraft-theme/app/views/layouts/fluid.html.erb app/views/layouts/application.html.erb"
+  else
+  end
+end
 
 # for git
 gitignore = <<-GITIGNORE
