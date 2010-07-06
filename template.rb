@@ -33,8 +33,7 @@ plugin 'handicraft_ujs', :git => 'git://github.com/ihower/handicraft_ujs.git'
 
 # gems
 
-gem 'will_paginate'
-gem 'action_mailer_optional_tls'
+gem 'will_paginate', "3.0.pre"
 gem 'delayed_job'
 gem 'paperclip'
 
@@ -59,6 +58,14 @@ if yes?("Using Handicraft-theme ?")
   if File.directory?("../handicraft-theme")
     run "rm app/views/layouts/application.html.erb"
     run "cp ../handicraft-theme/app/views/layouts/fluid.html.erb app/views/layouts/application.html.erb"
+
+    run "mkdir app/views/common"
+    run "cp ../handicraft-theme/app/views/common/_main_navigation.html.erb app/views/common/_main_navigation.html.erb"
+    run "cp ../handicraft-theme/app/views/common/_user_navigation.html.erb app/views/common/_user_navigation.html.erb"
+   
+    run "cp ../handicraft-theme/public/stylesheets/stickie.css public/stylesheets/"
+    run "mkdir public/stylesheets/handicraft/"
+    run "cp -R ../handicraft-theme/public/stylesheets/handicraft/* public/stylesheets/handicraft/"
   else
   end
 end
@@ -102,11 +109,14 @@ Run the following commands to complete the setup of #{app_name.humanize}:
 % bundle lock
 % script/rails generate rspec:install
 
+Create Dashboard controller
+
+% rails generate controller Dashboard index 
+
 DOCS
 
 log docs
 
-generate :controller, "welcome index"
-route "map.root :controller => 'welcome'"
+
 
 
