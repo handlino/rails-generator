@@ -29,8 +29,8 @@ application generators
 
 # plugins
 
-plugin 'handicraft_helper', :git => 'git://github.com/ihower/handicraft_helper.git'
-plugin 'handicraft_ujs', :git => 'git://github.com/ihower/handicraft_ujs.git'
+plugin 'handicraft_helper', :git => 'git://github.com/handlino/handicraft_helper.git'
+plugin 'handicraft_ujs', :git => 'git://github.com/handlino/handicraft_ujs.git'
 
 # gems
 
