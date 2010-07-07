@@ -17,18 +17,17 @@ route "map.root :controller => 'welcome'"
 
 application <<-GENERATORS
     config.generators do |g|
-      g.test_framework :rspec, :fixture => true, :views => false
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 GENERATORS
 
-
-#run "bundle install"
-#run "rails g authlogic:session user_session"
-
 apply File.dirname(__FILE__) + '/common/jquery.rb'
 apply File.dirname(__FILE__) + '/common/handicraft-theme.rb'
 apply File.dirname(__FILE__) + '/common/git.rb'
+
+generate "rspec:install"
+git :add => "."
+git :commit => "-m 'done: rails g rspec:install'"
 
 log <<-DOCS
 
