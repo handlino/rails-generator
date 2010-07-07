@@ -14,7 +14,7 @@ route "map.root :controller => 'welcome'"
 # install unit test framework
 
 gem "factory_girl_rails",   ">= 1.0.0",          :group => [:test, :cucumber]
-gem "rspec-rails",          ">= 2.0.0.beta.12",  :group => [:test, :cucumber]
+gem "rspec-rails",          ">= 2.0.0.beta.9.1",  :group => [:test, :cucumber]
 
 generators = <<-GENERATORS
 
@@ -28,7 +28,7 @@ application generators
 
 # handlino gems
 
-gem 'handicraft_helper',  ">=1.0"
+gem 'handicraft_helper',  ">=1.1"
 
 # gems
 
