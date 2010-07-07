@@ -1,6 +1,25 @@
-apply 'http://datamapper.org/templates/rails/gemfile.rb'
-
 apply File.dirname(__FILE__) + '/common/gems.rb'
+
+RAILS_VERSION = '~> 3.0.0.beta4'
+gem 'activesupport',      RAILS_VERSION, :require => 'active_support'
+gem 'actionpack',         RAILS_VERSION, :require => 'action_pack'
+gem 'actionmailer',       RAILS_VERSION, :require => 'action_mailer'
+gem 'railties',           RAILS_VERSION, :require => 'rails'
+
+gem 'dm-rails'
+gem 'dm-sqlite-adapter'
+gem 'dm-mysql-adapter'
+gem 'dm-migrations'
+gem 'dm-types'
+gem 'dm-validations'
+gem 'dm-constraints'
+gem 'dm-transactions'
+gem 'dm-aggregates'
+gem 'dm-timestamps'
+gem 'dm-observer'
+gem 'dm-core'
+gem 'dm-do-adapter'
+gem 'dm-active_model'
 
 apply 'http://datamapper.org/templates/rails/config.rb'
 apply 'http://datamapper.org/templates/rails/database.yml.rb'
@@ -20,7 +39,7 @@ application <<-GENERATORS
     end
 GENERATORS
 
-run "bundle install"
+# run "bundle install"
 run "rails g authlogic:session user_session"
 
 # create root path
