@@ -13,14 +13,8 @@ route "map.root :controller => 'welcome'"
 
 # install unit test framework
 
-gem "capybara",             ">= 0.3.8",          :group => [:test, :cucumber]
-gem "cucumber-rails",       ">= 0.3.2",          :group => [:test, :cucumber]
-gem "database_cleaner",     ">= 0.5.2",          :group => [:test, :cucumber]
 gem "factory_girl_rails",   ">= 1.0.0",          :group => [:test, :cucumber]
-gem "launchy",              ">= 0.3.5",          :group => [:test, :cucumber]
 gem "rspec-rails",          ">= 2.0.0.beta.12",  :group => [:test, :cucumber]
-gem "spork",                ">= 0.8.4",          :group => [:test, :cucumber]
-
 
 generators = <<-GENERATORS
 
@@ -38,9 +32,11 @@ gem 'handicraft_helper',  ">=1.0"
 
 # gems
 
-gem 'will_paginate', ">=3.0.pre"
+gem 'will_paginate',  ">=3.0.pre"
 gem 'delayed_job'
 gem 'paperclip'
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+ 
 
 # JQuery
 
@@ -107,6 +103,9 @@ create_file ".gitignore", gitignore
 git :init
 git :add => "."
 
+run "bundle install"
+run "rails g authlogic:session user_session"
+
 docs = <<-DOCS
 
 Run the following commands to complete the setup of #{app_name.humanize}:
@@ -115,10 +114,6 @@ Run the following commands to complete the setup of #{app_name.humanize}:
 % bundle install
 % bundle lock
 % script/rails generate rspec:install
-
-Create Dashboard controller
-
-% rails generate controller Dashboard index 
 
 DOCS
 
