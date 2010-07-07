@@ -5,17 +5,22 @@ run "rm public/index.html"
 run "rm -f public/javascripts/*"
 run "rm -f publuc/images/*"
 
+# create root path
+
+generate :controller, "Welcome index"
+route "map.root :controller => 'welcome'"
+
+
 # install unit test framework
 
-gem 'rspec', ">=2.0.0.beta.9", :group => :test
-gem 'rspec-rails', ">=2.0.0.beta.9.1",  :group => :test
-gem "factory_girl", :group => :test
-gem 'capybara', :group => :test
-gem 'database_cleaner', :group => :test
-gem 'cucumber-rails', :group => :test
-gem 'cucumber', :group => :test
-gem 'spork', :group => :test
-gem 'launchy' , :group => :test
+gem "capybara",             ">= 0.3.8",          :group => [:test, :cucumber]
+gem "cucumber-rails",       ">= 0.3.2",          :group => [:test, :cucumber]
+gem "database_cleaner",     ">= 0.5.2",          :group => [:test, :cucumber]
+gem "factory_girl_rails",   ">= 1.0.0",          :group => [:test, :cucumber]
+gem "launchy",              ">= 0.3.5",          :group => [:test, :cucumber]
+gem "rspec-rails",          ">= 2.0.0.beta.12",  :group => [:test, :cucumber]
+gem "spork",                ">= 0.8.4",          :group => [:test, :cucumber]
+
 
 generators = <<-GENERATORS
 
@@ -27,10 +32,9 @@ GENERATORS
 
 application generators
 
-# plugins
+# handlino gems
 
-plugin 'handicraft_helper', :git => 'git://github.com/ihower/handicraft_helper.git'
-plugin 'handicraft_ujs', :git => 'git://github.com/ihower/handicraft_ujs.git'
+gem 'handicraft_helper',  ">=1.0"
 
 # gems
 
@@ -41,19 +45,8 @@ gem 'paperclip'
 # JQuery
 
 get "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js",  "public/javascripts/jquery.js"
-get "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "public/javascripts/jquery-ui.js"
 get "http://github.com/rails/jquery-ujs/raw/master/src/rails.js", "public/javascripts/rails.js"
 
-jquery = <<-JQUERY
-module ActionView::Helpers::AssetTagHelper
-  remove_const :JAVASCRIPT_DEFAULT_SOURCES
-  JAVASCRIPT_DEFAULT_SOURCES = %w(jquery.js jquery-ui.js rails.js)
-
-  reset_javascript_include_default
-end
-JQUERY
-
-initializer "jquery.rb", jquery
 
 if yes?("Using Handicraft-theme ?")
   if File.directory?("../handicraft-theme")
@@ -67,9 +60,22 @@ if yes?("Using Handicraft-theme ?")
     run "cp ../handicraft-theme/public/stylesheets/stickie.css public/stylesheets/"
     run "mkdir public/stylesheets/handicraft/"
     run "cp -R ../handicraft-theme/public/stylesheets/handicraft/* public/stylesheets/handicraft/"
+
+    run "cp -R ../handicraft-theme/public/javascripts/core.js public/javascripts/"
   else
   end
 end
+
+jquery = <<-JQUERY
+module ActionView::Helpers::AssetTagHelper
+  remove_const :JAVASCRIPT_DEFAULT_SOURCES
+  JAVASCRIPT_DEFAULT_SOURCES = %w(jquery.js rails.js core.js application.js)
+
+  reset_javascript_include_default
+end
+JQUERY
+
+initializer "jquery.rb", jquery
 
 # for git
 gitignore = <<-GITIGNORE
