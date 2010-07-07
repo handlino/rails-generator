@@ -1,14 +1,7 @@
-gem 'will_paginate',      ">=3.0.pre"
-gem 'handicraft_helper',  ">=1.1"
-gem 'delayed_job'
-gem 'paperclip'
-
-gem "factory_girl_rails", ">= 1.0.0",           :group => [:test, :cucumber]
-gem "rspec-rails",        ">= 2.0.0.beta.9.1",  :group => [:test, :cucumber]
-
-gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
-
 apply 'http://datamapper.org/templates/rails/gemfile.rb'
+
+apply File.dirname(__FILE__) + '/common/gems.rb'
+
 apply 'http://datamapper.org/templates/rails/config.rb'
 apply 'http://datamapper.org/templates/rails/database.yml.rb'
 
