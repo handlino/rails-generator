@@ -27,3 +27,4 @@ create_file ".gitignore", gitignore
 
 git :init
 git :add => "."
+git :commit => "-m 'project initiated.'"
