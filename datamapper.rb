@@ -1,3 +1,7 @@
+# remove unused files. The default Gemfile is unwanted.
+run "rm -f Gemfile README public/index.html public/javascripts/* publuc/images/*"
+create_file 'Gemfile'
+
 apply File.dirname(__FILE__) + '/common/gems.rb'
 
 RAILS_VERSION = '~> 3.0.0.beta4'
@@ -45,12 +49,6 @@ run "rails g authlogic:session user_session"
 # create root path
 generate :controller, "Welcome index"
 route "map.root :controller => 'welcome'"
-
-# remove unused files
-run "rm README"
-run "rm public/index.html"
-run "rm -f public/javascripts/*"
-run "rm -f publuc/images/*"
 
 apply File.dirname(__FILE__) + '/common/jquery.rb'
 apply File.dirname(__FILE__) + '/common/handicraft-theme.rb'
