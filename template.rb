@@ -29,6 +29,10 @@ generate "rspec:install"
 git :add => "."
 git :commit => "-m 'done: rails g rspec:install'"
 
+unless @opts["datamapper"]
+  apply File.dirname(__FILE__) + '/common/authlogic.rb'
+end
+
 log <<-DOCS
 
 Run the following commands to complete the setup of #{app_name.humanize}:
