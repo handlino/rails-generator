@@ -19,8 +19,8 @@ application <<-GENERATORS
 GENERATORS
 
 
-run "bundle install"
-run "rails g authlogic:session user_session"
+#run "bundle install"
+#run "rails g authlogic:session user_session"
 
 apply File.dirname(__FILE__) + '/common/jquery.rb'
 apply File.dirname(__FILE__) + '/common/handicraft-theme.rb'

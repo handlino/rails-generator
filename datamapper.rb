@@ -44,7 +44,7 @@ application <<-GENERATORS
 GENERATORS
 
 # run "bundle install"
-run "rails g authlogic:session user_session"
+#run "rails g authlogic:session user_session"
 
 # create root path
 generate :controller, "Welcome index"
