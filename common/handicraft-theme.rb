@@ -1,4 +1,4 @@
-if yes?("Using Handicraft-theme ?")
+if @opts["handicraft_theme"]
   if File.directory?("../handicraft-theme")
     run "rm app/views/layouts/application.html.erb"
     run "cp ../handicraft-theme/app/views/layouts/fluid.html.erb app/views/layouts/application.html.erb"

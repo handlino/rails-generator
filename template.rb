@@ -1,5 +1,13 @@
+@opts = {
+  "handicraft_theme" => yes?("Question: Using the awesome Handicraft Theme ?"),
+  "datamapper"       => yes?("Question: Using the awesome DataMapper ?"),
+}
+
 # remove unused files
 run "rm -f README public/index.html public/javascripts/* publuc/images/*"
+
+# datamapper is special, it has to be here.
+apply File.dirname(__FILE__) + '/common/datamapper.rb'
 
 apply File.dirname(__FILE__) + '/common/gems.rb'
 

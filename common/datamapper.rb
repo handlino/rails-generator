@@ -1,5 +1,5 @@
 # remove unused files. The default Gemfile is unwanted.
-run "rm -f Gemfile README public/index.html public/javascripts/* publuc/images/*"
+remove_file 'Gemfile'
 create_file 'Gemfile'
 
 RAILS_VERSION = '~> 3.0.0.beta4'
@@ -7,8 +7,6 @@ gem 'activesupport',      RAILS_VERSION, :require => 'active_support'
 gem 'actionpack',         RAILS_VERSION, :require => 'action_pack'
 gem 'actionmailer',       RAILS_VERSION, :require => 'action_mailer'
 gem 'railties',           RAILS_VERSION, :require => 'rails'
-
-apply File.dirname(__FILE__) + '/common/gems.rb'
 
 gem 'dm-rails'
 gem 'dm-mysql-adapter'
@@ -74,34 +72,3 @@ inject_into_file  'app/controllers/application_controller.rb',
 inject_into_class 'app/controllers/application_controller.rb',
                   'ApplicationController',
                   "  use Rails::DataMapper::Middleware::IdentityMap\n"
-
-application <<-GENERATORS
-    config.generators do |g|
-      g.test_framework :rspec, :fixture => true, :views => false
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
-    end
-GENERATORS
-
-run "bundle install"
-
-# create root path
-generate :controller, "Welcome index"
-route "map.root :controller => 'welcome'"
-
-generate "authlogic:session", "user_session"
-
-apply File.dirname(__FILE__) + '/common/jquery.rb'
-apply File.dirname(__FILE__) + '/common/handicraft-theme.rb'
-apply File.dirname(__FILE__) + '/common/git.rb'
-
-log <<-DOCS
-
-Run the following commands to complete the setup of #{app_name.humanize}:
-
-% cd #{app_name}
-% bundle install
-% bundle lock
-% rails g authlogic:session user_session
-% rails g rspec:install
-
-DOCS
