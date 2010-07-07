@@ -38,9 +38,9 @@ gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => '
 run "bundle install"
 run "rails g authlogic:session user_session"
 
-apply File.dirname(__FILE__) + '/jquery.rb'
-apply File.dirname(__FILE__) + '/handicraft-theme.rb'
-apply File.dirname(__FILE__) + '/git.rb'
+apply File.dirname(__FILE__) + '/common/jquery.rb'
+apply File.dirname(__FILE__) + '/common/handicraft-theme.rb'
+apply File.dirname(__FILE__) + '/common/git.rb'
 
 log <<-DOCS
 

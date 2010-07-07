@@ -40,9 +40,9 @@ run "rm public/index.html"
 run "rm -f public/javascripts/*"
 run "rm -f publuc/images/*"
 
-apply File.dirname(__FILE__) + '/jquery.rb'
-apply File.dirname(__FILE__) + '/handicraft-theme.rb'
-apply File.dirname(__FILE__) + '/git.rb'
+apply File.dirname(__FILE__) + '/common/jquery.rb'
+apply File.dirname(__FILE__) + '/common/handicraft-theme.rb'
+apply File.dirname(__FILE__) + '/common/git.rb'
 
 log <<-DOCS
 
