@@ -12,6 +12,8 @@ gem 'rspec-core',         RSPEC_VERSION, :group => :test, :require => 'rspec/cor
 gem 'rspec-expectations', RSPEC_VERSION, :group => :test, :require => 'rspec/expectations'
 gem 'rspec-mocks',        RSPEC_VERSION, :group => :test, :require => 'rspec/mocks'
 gem 'rspec-rails',        RSPEC_VERSION, :group => :test
-gem "factory_girl",       ">= 1.0.0",    :group => :test
+
+gem "factory_girl"                       :group => :test
 gem "factory_girl_rails", ">= 1.0.0",    :group => :test
 
+gem "rails3-generators", :group => :development  
