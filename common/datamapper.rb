@@ -1,7 +1,9 @@
 if @opts["datamapper"]
   # remove unused files. The default Gemfile is unwanted.
   remove_file 'Gemfile'
-  create_file 'Gemfile'
+  create_file 'Gemfile' do
+    %[source "http://rubygems.org"\n]
+  end
 
   RAILS_VERSION = '~> 3.0.0.beta4'
   gem 'activesupport',      RAILS_VERSION, :require => 'active_support'
