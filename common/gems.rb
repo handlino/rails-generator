@@ -1,9 +1,9 @@
-gem 'handicraft_helper',  ">=1.1"
+#gem 'handicraft_helper',  ">=1.1", :path => "~/workspace/handicraft_helper"
 
 gem 'will_paginate',      ">=3.0.pre"
 gem 'delayed_job'
 gem 'paperclip'
-gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+#gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 
 RSPEC_VERSION = ">= 2.0.0.beta.9.1"
 

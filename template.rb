@@ -17,6 +17,7 @@ route "map.root :controller => 'welcome'"
 
 application <<-GENERATORS
     config.generators do |g|
+      g.test_framework :rspec
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 GENERATORS
@@ -29,9 +30,9 @@ generate "rspec:install"
 git :add => "."
 git :commit => "-m 'done: rails g rspec:install'"
 
-unless @opts["datamapper"]
-  apply File.dirname(__FILE__) + '/common/authlogic.rb'
-end
+#unless @opts["datamapper"]
+#  apply File.dirname(__FILE__) + '/common/authlogic.rb'
+#end
 
 log <<-DOCS
 
