@@ -13,7 +13,7 @@ apply File.dirname(__FILE__) + '/common/gems.rb'
 
 # create root path
 generate :controller, "Welcome index"
-route "map.root :controller => 'welcome'"
+route "root :to => 'welcome#index'"
 
 application <<-GENERATORS
     config.generators do |g|
